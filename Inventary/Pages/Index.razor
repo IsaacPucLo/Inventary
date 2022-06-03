@@ -1,18 +1,5 @@
 ﻿@page "/"
 
-<h1>Reto 1</h1>
-
-<input type="text" @bind-value="@newMessage" />
-<input type="button" value="Insertar" @onclick="ChangeText"/>
-
-<SurveyPrompt textBody="@message" />
-
-@code{
-    string message = "Este es un mensaje por default";
-    string newMessage = "";
-
-    private void ChangeText() {
-        message = newMessage;
-    }
-
-}
+<Form001 Message="Un Saludo"/>
+<Form001 Message="Otro saludo" />
+<Form001 Message="Otra cosa" />
