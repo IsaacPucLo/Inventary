@@ -8,17 +8,14 @@ namespace Entities {
         [StringLength(50)]
         public string StorageId { get; set; }
 
+        [Required]
         public DateTime LastUpdate { get; set; }
         
         [Required]
         public int PartialQuantity { get; set; }
-        
-        [Required]
-        [StringLength(10)]
-        public string ProductId { get; set; }
-        
-        [Required]
-        [StringLength(50)]
-        public string WherehouseId { get; set; }
+
+        //RELACIONES CON OTRAS TABLAS O ENTIDADES
+        public string ProductId { get; set; }           //Relacion 1-N con StorageEntity
+        public ProductEntity Product { get; set; }
     }
 }

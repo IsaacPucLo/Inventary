@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Entities {
-    class InOutEntity {
+    public class InOutEntity {
         
         [Key]
         [StringLength(50)]
@@ -19,8 +19,5 @@ namespace Entities {
         [Required]
         public bool IsInput { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string StorageId { get; set; }
     }
 }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Entities {
-    class WerehouseEntity {
+    public class WerehouseEntity {
         [Key]
         [StringLength(50)]
         public int WarehouseId { get; set; }
@@ -13,6 +13,7 @@ namespace Entities {
         [StringLength(100)]
         public string WarehouseName { get; set; }
         
+        [Required]
         [StringLength(150)]
         public string WarehouseAddress { get; set; }
     }
