@@ -15,5 +15,10 @@ namespace DataAccess {
         public DbSet<WarehouseEntity> Warehouses { get; set; }
         public DbSet<StorageEntity> Storages { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder options) {
+            if (!options.IsConfigured) {
+                options.UseSqlServer("Server=USERP-C; Database=InventarDb; User Id=USER-PC; Password=");
+            }
+        }
     }
 }
