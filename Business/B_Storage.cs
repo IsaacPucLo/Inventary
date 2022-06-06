@@ -46,7 +46,7 @@ namespace Business {
         }
 
         /* NUEVO MÉTODO */
-        public static List<StorageEntity> StorageListByWarehouse(string idWarehouse) {
+        public static List<StorageEntity> StorageProductByWarehouse(string idWarehouse) {
             using (var db = new InventaryContext()) {
                 return db.Storages
                     .Include(s => s.Product)
