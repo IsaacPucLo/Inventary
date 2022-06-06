@@ -63,7 +63,7 @@
     }
 
     private void SaveInOut() {
-        //var quantity = oInOut.Quantity;
+        //PARA QUE PUEDA FUNCIONAR EDITAR EL MISMO PRODUCTO EN DIFERENTES ALOJAMIENTOS HAY QUE MARCAR UN NOMBRE DISTINTO Y LUEGO VOLVER A MARCAR EL QUE SE TENÍA ESTO DEBIDO A QUE LA FUNION ONCHANGE SOLO FUNCIONA CUANDO SE SELECCIOONA OTRO TIPO, NO VALE ENTRAR Y SELECCIONAR EL MISMO
         var oStorage = storages.LastOrDefault(s => s.StorageId == oInOut.StorageId);
         var oProduct = oStorage.Product;
 
