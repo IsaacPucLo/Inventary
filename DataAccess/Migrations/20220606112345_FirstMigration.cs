@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataAccess.Migrations
 {
-    public partial class FistMigration : Migration
+    public partial class FirstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -23,8 +23,7 @@ namespace DataAccess.Migrations
                 name: "Warehouses",
                 columns: table => new
                 {
-                    WarehouseId = table.Column<int>(maxLength: 50, nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    WarehouseId = table.Column<string>(maxLength: 50, nullable: false),
                     WarehouseName = table.Column<string>(maxLength: 100, nullable: false),
                     WarehouseAddress = table.Column<string>(maxLength: 150, nullable: false)
                 },
@@ -62,7 +61,7 @@ namespace DataAccess.Migrations
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     PartialQuantity = table.Column<int>(nullable: false),
                     ProductId = table.Column<string>(nullable: true),
-                    WarehouseId = table.Column<int>(nullable: false)
+                    WarehouseId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -78,7 +77,7 @@ namespace DataAccess.Migrations
                         column: x => x.WarehouseId,
                         principalTable: "Warehouses",
                         principalColumn: "WarehouseId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -100,6 +99,28 @@ namespace DataAccess.Migrations
                         principalTable: "Storages",
                         principalColumn: "StorageId",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "CategoryId", "CategoryName" },
+                values: new object[,]
+                {
+                    { "ASH", "Aseo Hogar" },
+                    { "ASP", "Aseo Personal" },
+                    { "HGR", "Hogar" },
+                    { "PRF", "Perfumería" },
+                    { "SLD", "Salud" },
+                    { "VDJ", "Video Juegos" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Warehouses",
+                columns: new[] { "WarehouseId", "WarehouseAddress", "WarehouseName" },
+                values: new object[,]
+                {
+                    { "9a78c92c-1014-4170-b27c-de666a412a34", "Calle 8 con 23", "Bodega Central" },
+                    { "86d192db-09f4-4a1e-a7c3-5b55ed9fc667", "Calle norte con occidente", "Bodega Norte" }
                 });
 
             migrationBuilder.CreateIndex(

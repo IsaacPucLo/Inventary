@@ -135,8 +135,8 @@ namespace DataAccess.Migrations
                     b.Property<string>("ProductId")
                         .HasColumnType("nvarchar(10)");
 
-                    b.Property<int>("WarehouseId")
-                        .HasColumnType("int");
+                    b.Property<string>("WarehouseId")
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("StorageId");
 
@@ -149,11 +149,9 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Entities.WarehouseEntity", b =>
                 {
-                    b.Property<int>("WarehouseId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasMaxLength(50)
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("WarehouseId")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("WarehouseAddress")
                         .IsRequired()
@@ -172,13 +170,13 @@ namespace DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            WarehouseId = 249,
+                            WarehouseId = "9a78c92c-1014-4170-b27c-de666a412a34",
                             WarehouseAddress = "Calle 8 con 23",
                             WarehouseName = "Bodega Central"
                         },
                         new
                         {
-                            WarehouseId = 706,
+                            WarehouseId = "86d192db-09f4-4a1e-a7c3-5b55ed9fc667",
                             WarehouseAddress = "Calle norte con occidente",
                             WarehouseName = "Bodega Norte"
                         });
@@ -206,9 +204,7 @@ namespace DataAccess.Migrations
 
                     b.HasOne("Entities.WarehouseEntity", "Warehouse")
                         .WithMany("Storages")
-                        .HasForeignKey("WarehouseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("WarehouseId");
                 });
 #pragma warning restore 612, 618
         }

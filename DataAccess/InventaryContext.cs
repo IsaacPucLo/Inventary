@@ -37,8 +37,8 @@ namespace DataAccess {
             );
 
             modelBuilder.Entity<WarehouseEntity>().HasData(
-                new WarehouseEntity { WarehouseId = new Random().Next(0, 999), WarehouseName = "Bodega Central", WarehouseAddress = "Calle 8 con 23" },
-                new WarehouseEntity { WarehouseId = new Random().Next(0,999), WarehouseName = "Bodega Norte", WarehouseAddress = "Calle norte con occidente" }
+                new WarehouseEntity { WarehouseId = Guid.NewGuid().ToString(), WarehouseName = "Bodega Central", WarehouseAddress = "Calle 8 con 23" },
+                new WarehouseEntity { WarehouseId = Guid.NewGuid().ToString(), WarehouseName = "Bodega Norte", WarehouseAddress = "Calle norte con occidente" }
             );
         }
     }

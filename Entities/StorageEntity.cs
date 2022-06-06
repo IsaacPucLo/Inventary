@@ -19,7 +19,7 @@ namespace Entities {
         public string ProductId { get; set; }           //Relacion 1-N con StorageEntity
         public ProductEntity Product { get; set; }
 
-        public int WarehouseId { get; set; }
+        public string WarehouseId { get; set; }
         public WarehouseEntity Warehouse { get; set; }
 
         public ICollection<InOutEntity> InOuts { get; set; }

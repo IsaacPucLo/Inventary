@@ -7,7 +7,7 @@ namespace Entities {
     public class WarehouseEntity {
         [Key]
         [StringLength(50)]
-        public int WarehouseId { get; set; }
+        public string WarehouseId { get; set; }
 
         [Required]
         [StringLength(100)]
