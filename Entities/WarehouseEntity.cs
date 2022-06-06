@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Entities {
-    public class WerehouseEntity {
+    public class WarehouseEntity {
         [Key]
         [StringLength(50)]
         public int WarehouseId { get; set; }

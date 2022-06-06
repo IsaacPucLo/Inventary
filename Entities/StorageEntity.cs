@@ -20,7 +20,7 @@ namespace Entities {
         public ProductEntity Product { get; set; }
 
         public int WarehouseId { get; set; }
-        public WerehouseEntity Warehouse { get; set; }
+        public WarehouseEntity Warehouse { get; set; }
 
         public ICollection<InOutEntity> InOuts { get; set; }
     }
