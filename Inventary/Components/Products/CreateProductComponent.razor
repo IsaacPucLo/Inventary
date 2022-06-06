@@ -2,20 +2,28 @@
 @using Business;
 <div>
     <EditForm Model="oProduct"> <!--Necesita de un modelo este formulario y el modelo que le pasamos es el que se creó en la capa de Entidades-->
-        <div class="form-control">
+        <div class="form-group">
             <label>Referencia: </label>
             <InputText @bind-Value="oProduct.ProductId" class="form-control" /> <!--InputText es un control de Blazor pero es 
                                                                                     igual que el Input type="Text" de HTML-->
         </div>
         
-        <div class="form-control">
+        <div class="form-group">
             <label>Nombre del producto: </label>
             <InputText @bind-Value="oProduct.ProductName" class="form-control" />
         </div>
 
-        <div class="form-control">
+        <div class="form-group">
             <label>Descripción: </label>
             <InputTextArea @bind-Value="oProduct.ProductDescription" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Categoría: </label>
+            <InputSelect @bind-Value="oProduct.ProductId" class="form-control">      <!--Para crear una barra desplegable para seleccionar-->
+                @foreach(var category in categories) {          <!--Este ciclo es el encargado de mostrarnos cada uno de los elementos de la tabla-->
+                        <option value="@category.CategoryId"> @category.CategoryName</option>
+                    }
+            </InputSelect>
         </div>
 
         <input type="button" value="Agregar Producto" @onclick="SaveProduct" />
@@ -24,6 +32,12 @@
 
 @code {
     ProductEntity oProduct = new ProductEntity();   //Creamos el objeto de ProductEntity, una instancia
+
+    List<CategoryEntity> categories = new List<CategoryEntity>();
+
+    protected override async Task OnInitializedAsync() {
+        categories = B_Category.CategoryList();
+    }
 
     private void SaveProduct() {
         B_Product.CreateProduct(oProduct);
