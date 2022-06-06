@@ -9,14 +9,14 @@ namespace Business {
     public class B_Warehouse { //ES UN CRUD
 
         //LEER DATOS
-        public List<WarehouseEntity> WarehouseList() {
+        public static List<WarehouseEntity> WarehouseList() {
             using (var db = new InventaryContext()) {
                 return db.Warehouses.ToList();
             }
         }
 
         //CREAR DATOS
-        public void CreateWarehouse(WarehouseEntity oWarehouse) {
+        public static void CreateWarehouse(WarehouseEntity oWarehouse) {
             using (var db = new InventaryContext()) {
                 db.Warehouses.Add(oWarehouse);
                 db.SaveChanges();
@@ -24,7 +24,7 @@ namespace Business {
         }
 
         //EDITAR DATOS
-        public void UpdateWarehouse(WarehouseEntity oWarehouse) {
+        public static void UpdateWarehouse(WarehouseEntity oWarehouse) {
             using (var db = new InventaryContext()) {
                 db.Warehouses.Update(oWarehouse);
                 db.SaveChanges();

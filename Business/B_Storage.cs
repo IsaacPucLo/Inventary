@@ -9,14 +9,14 @@ namespace Business {
     public class B_Storage {//ES UN CRUD
 
         //LEER DATOS
-        public List<StorageEntity> StorageList() {
+        public static List<StorageEntity> StorageList() {
             using(var db = new InventaryContext()) {
                 return db.Storages.ToList();
             }
         }
 
         //CREAR DATOS
-        public void CreateStorage (StorageEntity oStorage) {
+        public static void CreateStorage (StorageEntity oStorage) {
             using (var db = new InventaryContext()) {
                 db.Storages.Add(oStorage);
                 db.SaveChanges();
@@ -24,7 +24,7 @@ namespace Business {
         }
 
         //EDITAR DATOS
-        public void UpdateStorage (StorageEntity oStorage) {
+        public static void UpdateStorage (StorageEntity oStorage) {
             using (var db = new InventaryContext()) {
                 db.Storages.Update(oStorage);
                 db.SaveChanges();

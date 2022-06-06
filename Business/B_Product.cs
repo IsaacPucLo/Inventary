@@ -9,14 +9,14 @@ namespace Business {
     public class B_Product {//Será el CRUD
 
         //LAMADO A DATOS
-        public List<ProductEntity> ProductList() {
+        public static List<ProductEntity> ProductList() {
             using (var db = new InventaryContext()) { //Se usa Using para abrir y luego cerrar al finalizar la ulima instrucción cierra la conexión
                 return db.Products.ToList();
             }
         }
 
         //CREACIÓN DE DATOS
-        public void CreateProduct(ProductEntity oProduct) {
+        public static void CreateProduct(ProductEntity oProduct) {
             using (var db = new InventaryContext()) {
                 db.Products.Add(oProduct);
                 db.SaveChanges();
@@ -24,7 +24,7 @@ namespace Business {
         }
 
         //ACTUALIZACIÓN DE DATOS
-        public void UpdateProduct(ProductEntity oProduct) {
+        public static void UpdateProduct(ProductEntity oProduct) {
 
             using (var db = new InventaryContext()) {
                 db.Products.Update(oProduct);    //El mismo sistema se encarga de revisar el Id que trae el objeto, como viene, que es lo que hay que actualizar (tecnicamente hablando)
