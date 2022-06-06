@@ -14,6 +14,14 @@ namespace Business {
                 return db.Products.ToList();
             }
         }
+        
+        //Para el update, que nos pueda retornar el registro con el id que se le manda por parámetro
+        public static ProductEntity ProductById(string id) {
+            using (var db = new InventaryContext()) {
+                return db.Products.Find(id);
+                //return db.Products.ToList().LastOrDefault(p => p.ProductId == id);    //Se puede hacer de esta manera pero hay que convertir a ToList lo que lo hace menos optimo
+            }
+        }
 
         //CREACIÓN DE DATOS
         public static void CreateProduct(ProductEntity oProduct) {
