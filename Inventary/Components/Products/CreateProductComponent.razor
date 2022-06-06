@@ -1,5 +1,9 @@
 ﻿@using Entities;   <!--Para hacer uso de los archivos de otra capa o proyecto tenemos que importarla-->
 @using Business;
+
+@inject NavigationManager NavManager
+
+
 <div>
     <EditForm Model="oProduct"> <!--Necesita de un modelo este formulario y el modelo que le pasamos es el que se creó en la capa de Entidades-->
         <div class="form-group">
@@ -42,5 +46,6 @@
 
     private void SaveProduct() {
         B_Product.CreateProduct(oProduct);
+        NavManager.NavigateTo("product/list");
     }
 }
