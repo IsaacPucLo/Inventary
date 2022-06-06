@@ -1,6 +1,17 @@
 ﻿@using Entities;
 @using Business;
 
+<hr />
+<select class="form-control" @onchange="CategoryChanged">   <!--Es un evento, quiere decir que cuando el valor 
+                                                             del select cambia ocurre o se ejecuta esa función o acción-->
+    <option value="">Seleccione categoría...</option>   <!--Muestra el mensaje por defecto (al ejecutar el select)-->
+    @foreach (var category in categories) {
+        <option value="@category.CategoryId">@category.CategoryName</option>
+    }
+</select>
+<hr />
+
+
 <table class="table table-hover table-bordered">
     <thead>
         <tr>
@@ -10,7 +21,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var product in products) {
+        @foreach (var product in tempProducts) {
         <tr>
             <td>@product.ProductId</td>
             <td>@product.ProductName</td>
@@ -26,8 +37,16 @@
 
 @code {
     List<ProductEntity> products = new List<ProductEntity>();
+    List<ProductEntity> tempProducts = new List<ProductEntity>();
+    List<CategoryEntity> categories = new List<CategoryEntity>();
 
     protected override async Task OnInitializedAsync() {
         products = B_Product.ProductList();
+        tempProducts = products;
+        categories = B_Category.CategoryList();
+    }
+
+    private void CategoryChanged(ChangeEventArgs e) {       ///tomamos el cambio que se haya efectuado con esa sentencia
+        tempProducts= products.Where(c => c.CategoryId == e.Value.ToString()).ToList();
     }
 }
