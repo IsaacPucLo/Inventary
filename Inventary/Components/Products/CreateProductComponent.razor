@@ -19,10 +19,11 @@
         </div>
         <div class="form-group">
             <label>Categoría: </label>
-            <InputSelect @bind-Value="oProduct.ProductId" class="form-control">      <!--Para crear una barra desplegable para seleccionar-->
+            <InputSelect @bind-Value="oProduct.CategoryId" class="form-control">      <!--Para crear una barra desplegable para seleccionar-->
+                <option>Seleccionar categoría...</option>    
                 @foreach(var category in categories) {          <!--Este ciclo es el encargado de mostrarnos cada uno de los elementos de la tabla-->
-                        <option value="@category.CategoryId"> @category.CategoryName</option>
-                    }
+                       <option value="@category.CategoryId"> @category.CategoryName</option>
+                 }
             </InputSelect>
         </div>
 
